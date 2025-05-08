@@ -1,0 +1,24 @@
+// main.dart import 'package:flutter/material.dart'; import 'src/app.dart';
+
+void main() { runApp(const HebraicoTopApp()); }
+
+// src/app.dart import 'package:flutter/material.dart'; import 'screens/home_screen.dart';
+
+class HebraicoTopApp extends StatelessWidget { const HebraicoTopApp({super.key});
+
+@override Widget build(BuildContext context) { return MaterialApp( title: 'HebraicoTOP', theme: ThemeData.dark(), home: const HomeScreen(), debugShowCheckedModeBanner: false, ); } }
+
+// src/screens/home_screen.dart import 'package:flutter/material.dart'; import '../widgets/unit_card.dart';
+
+class HomeScreen extends StatelessWidget { const HomeScreen({super.key});
+
+@override Widget build(BuildContext context) { return Scaffold( appBar: AppBar(title: const Text('HebraicoTOP')), body: ListView( padding: const EdgeInsets.all(16), children: const [ UnitCard(title: 'Unidade 1 - A1', chapters: 11), UnitCard(title: 'Unidade 2 - A1', chapters: 12), UnitCard(title: 'Unidade 3 - A1', chapters: 11), UnitCard(title: 'Unidade 4 - A1', chapters: 13), UnitCard(title: 'Unidade 5 - A2', chapters: 14), UnitCard(title: 'Unidade 6 - A2', chapters: 12), UnitCard(title: 'Unidade 7 - B1', chapters: 13), UnitCard(title: 'Unidade 8 - B1', chapters: 14), UnitCard(title: 'Unidade 9 - B2', chapters: 15), ], ), ); } }
+
+// src/widgets/unit_card.dart import 'package:flutter/material.dart';
+
+class UnitCard extends StatelessWidget { final String title; final int chapters;
+
+const UnitCard({super.key, required this.title, required this.chapters});
+
+@override Widget build(BuildContext context) { return Card( shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)), elevation: 6, margin: const EdgeInsets.symmetric(vertical: 8), child: Padding( padding: const EdgeInsets.all(16), child: Column( crossAxisAlignment: CrossAxisAlignment.start, children: [ Text(title, style: Theme.of(context).textTheme.titleLarge), const SizedBox(height: 8), Text('$chapters capítulos', style: Theme.of(context).textTheme.bodyMedium), ], ), ), ); } }
+
